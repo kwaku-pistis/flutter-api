@@ -1,5 +1,5 @@
 import 'package:api_calls/screens/album.dart';
-import 'package:api_calls/providers/providers.dart';
+import 'package:api_calls/providers/album.dart';
 import 'package:api_calls/screens/photos.dart';
 import 'package:flutter/material.dart';
 
