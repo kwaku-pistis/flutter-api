@@ -24,4 +24,23 @@ class HttpService {
       throw Exception('Failed to load album');
     }
   }
+
+  Future<Album> postAlbum(String title) async {
+    final response = await http.post(
+      baseUrl,
+      headers: {
+        HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
+      },
+      body: json.encode({
+        'title': title,
+        // 'title': 'New Album',
+        'userId': 1,
+      }),
+    );
+    if (response.statusCode == 201) {
+      return Album.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to create album');
+    }
+  }
 }
