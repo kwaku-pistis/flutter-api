@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:api_calls/models/album.dart';
 import 'package:http/http.dart' as http;
@@ -7,7 +8,12 @@ class HttpService {
   final baseUrl = Uri.parse('https://jsonplaceholder.typicode.com/albums/1');
 
   Future<http.Response> get() {
-    return http.get(baseUrl);
+    return http.get(
+      baseUrl,
+      headers: {
+        HttpHeaders.authorizationHeader: 'Basic your_api_token_here',
+      },
+    );
   }
 
   Future<Album> getAlbum() async {
